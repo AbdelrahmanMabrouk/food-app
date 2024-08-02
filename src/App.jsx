@@ -22,7 +22,7 @@ function App() {
   const routes = createBrowserRouter([
 
     {
-      path: 'foodApp',
+      path: '',
       element: <AuthLayout />,
       errorElement: <NotFound />,
       children: [

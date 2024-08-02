@@ -28,6 +28,7 @@ function App() {
       children: [
         { index: true, element: <Login /> },
         { path: 'login', element: <Login /> },
+        { path: 'foodApp', element: <Login /> },
         { path: 'forgetPass', element: <ForgetPass /> },
         { path: 'resetPass', element: <ResetPass /> },
         { path: 'register', element: <Register /> },

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../../../Shared/Components/Header/Header'
 import recopesImg from '../../../../assets/images/categoryImg.png'
 import axios from 'axios'
-import { BASE_IMG_URL, RECIPES_URLS, USERS_RECIPIES } from '../../../../assets/Constants/END_POINTS'
+import { BASE_IMG_URL, RECIPES_URLS } from '../../../../assets/Constants/END_POINTS'
 import NoData from '../../../Shared/Components/NoData/NoData'
 import noDataImg from '../../../../assets/images/no-data.png'
 import Button from 'react-bootstrap/Button';

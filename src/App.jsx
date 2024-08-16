@@ -1,5 +1,5 @@
 // import { useState } from 'react'  
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, createHashRouter, Navigate, RouterProvider } from 'react-router-dom'
 import './App.css'
 import AuthLayout from './modules/Shared/Components/AuthLayout/AuthLayout'
 import Login from './modules/Authentication/Components/Login/Login'
@@ -41,7 +41,7 @@ function App() {
     }
   }, [])
 
-  const routes = createBrowserRouter([
+  const routes = createHashRouter([
 
     {
       path: '',

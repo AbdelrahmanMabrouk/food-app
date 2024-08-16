@@ -1,14 +1,111 @@
-.auth-container{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.auth-container {
   background-image: url(./assets/images/authLayout.png);
   background-size: cover;
   background-position: center center;
 }
 
-.bg-overlay{
-  background:linear-gradient(45deg ,rgba(47, 140, 96, 0.63),rgba(0, 0, 0, 0.62))
+.bg-overlay {
+  background: linear-gradient(
+    45deg,
+    rgba(47, 140, 96, 0.63),
+    rgba(0, 0, 0, 0.62)
+  );
+}
+.header-container {
+  background-color: rgba(0, 146, 71, 1);
+  background-image: url(../src/assets/images/header-circles.svg);
+  background-size: contain;
+  background-position: center center;
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.home-data{
+  background: rgba(240, 255, 239, 1);
+
 }
 
 .form-control:focus {
   border-color: rgba(47, 140, 96, 0.63) !important;
-  box-shadow: 0 0 0 .10rem rgba(47, 140, 96, 0.63) !important;
+  box-shadow: 0 0 0 0.1rem rgba(47, 140, 96, 0.63) !important;
+}
+
+.sidebar-container .ps-sidebar-container {
+  background-color: rgba(31, 38, 62, 1);
+  height: 120vh;
+}
+
+.sidebar-container .ps-menu-button {
+  color: rgba(255, 255, 255, 1) !important;
+  font-weight: lighter;
+}
+
+.sidebar-container .ps-menu-button:hover {
+  background: rgba(0, 146, 71, 0.1) !important;
+}
+
+.sidebar-container .first-item .ps-menu-button:hover {
+  background: transparent !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.notfound-bg{
+  background-image: url(./assets/images/notfoundBg.png);
+  height:100vh;
+  /* background-size: 100% ;
+
+  background-repeat:no-repeat; */
+  background-size:85% 100%;
+  background-repeat: no-repeat;
+  background-position-x: right;
+ 
+}
+
+.title .btn{
+  background-color: rgba(0, 146, 71, 1) !important;
+  
+}
+
+
+.title .btn:hover{
+  background-color: rgba(0, 146, 71, .9) !important;
+  
+}
+
+.table-info{
+  background-color: rgba(226, 229, 235, 1);
+  border-radius: 10px;
+}
+
+
+
+.StandardTable thead  th  {
+  background-color: lightgray !important;
+  padding: 30px 10px;
+  /* border-radius: 10px  10px ; */
+ 
+}
+
+
+
+
+.img-list{
+  width: 25px;
 }

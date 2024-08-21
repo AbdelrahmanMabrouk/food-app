@@ -16,9 +16,10 @@ export const USERS_URLS = {
   delete: (id) => `${BASE_USERS}/${id}`,
   resetRequest: `${BASE_USERS}/Reset/Request`,
   reset: `${BASE_USERS}/Reset`,
-  getListUsers:`${BASE_USERS}`
+  getListUsers: `${BASE_USERS}`,
+  verify: `${BASE_USERS}/verify`
 
- 
+
 };
 
 
@@ -30,31 +31,36 @@ const BASE_CATEGORIES = `${BASE_URL}/Category`;
 export const CATEGORIES_URLS = {
 
   getList: `${BASE_CATEGORIES}`,
-  delete : (id)=> `${BASE_CATEGORIES}/${id}`,
-  create:`${BASE_CATEGORIES}`,
+  delete: (id) => `${BASE_CATEGORIES}/${id}`,
+  create: `${BASE_CATEGORIES}`,
+  update: (id) => `${BASE_CATEGORIES}/${id}`,
 
 };
 
-//RECIPES URLS
+//USERS URLS
 
 
-const BASE_RECIPES= `${BASE_URL}/Recipe`;
+const BASE_RECIPES = `${BASE_URL}/Recipe`;
 
 export const RECIPES_URLS = {
-
   getList: `${BASE_RECIPES}`,
-  delete : (id)=> `${BASE_RECIPES}/${id}`
+  delete: (id) => `${BASE_RECIPES}/${id}`,
+  create: `${BASE_RECIPES}`,
 
 };
 
 
-//users
+//tags  
 
-// const BASE_USERS_RECIPIES = `${BASE_URL}/userRecipe`
+export const GETALLTAGS = `${BASE_URL}/tag`
 
 
-//  export const USERS_RECIPIES ={
-//   getListUsersRecipe:`${BASE_USERS_RECIPIES}`,
-//   delete : (id)=> `${BASE_USERS_RECIPIES}/${id}`
+//userRecipe
 
-// }
+const BASE_USER_RECIPES = `${BASE_URL}/userRecipe`;
+
+export const USER_RECIPES = {
+  getList: `${BASE_USER_RECIPES}`,
+  addToFav: `${BASE_USER_RECIPES}`,
+  removeFromFav: (id) => `${BASE_USER_RECIPES}/${id}`,
+};

@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../../../../modules/Shared/Components/AuthLayout/Auth.module.css'
-import { EmailValidations } from '../../../../assets/Constants/Validations.js';
+// import { EmailValidations } from '../../../../assets/Constants/Validations.js';
+import { AuthContext } from '../../../../context/context.jsx';
 
 
 
 
-export default function Login({ saveLoginData }) {
+export default function Login() {
+
+  let {saveLoginData}=useContext(AuthContext)
 
   let [isPasswordVisibale, setIsPasswordVisibale] = useState(false)
 

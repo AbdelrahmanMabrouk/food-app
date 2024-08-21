@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../../../context/context'
+
+import navImg from '../../../../assets/images/nav-img.png'
 
 
 
+export default function Navbar() {
+  let {loginData}=useContext(AuthContext)
+  
 
-export default function Navbar({ loginData }) {
   return (
     <>
 
@@ -14,9 +19,11 @@ export default function Navbar({ loginData }) {
               <span className="navbar-toggler-icon"></span>
             </button>
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
+                <li className="nav-item  mx-2">
+                 <img src={navImg} alt="" />
+                </li>
                 <li className="nav-item">
                   {loginData?.userName}
                 </li>

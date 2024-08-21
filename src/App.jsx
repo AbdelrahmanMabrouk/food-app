@@ -18,28 +18,14 @@ import { jwtDecode } from 'jwt-decode'
 import ProtectedRoute from './modules/Shared/Components/ProtectedRoute/ProtectedRoute'
 import 'react-toastify/dist/ReactToastify.css';
 import RecipeData from './modules/Recipes/Components/RecipeData/RecipeData'
+import VerifyAccount from './modules/Authentication/Components/VerifyAccount/VerifyAccount'
+import Favourites from './modules/Recipes/Components/Favourites/Favourites'
+import ProtectedRouteAdmin from './modules/Shared/Components/ProtectedRoute/ProtectedRouteAdmin'
 
 
 function App() {
 
-  const [loginData, setLoginData] = useState(null)
 
-  let saveLoginData = () => {
-
-    let encodedToken = localStorage.getItem('token')
-
-    let decodedToken = jwtDecode(encodedToken)
-
-    setLoginData(decodedToken);
-
-  };
-
-  useEffect (() => {
-      
-    if (localStorage.getItem('token')) {
-      saveLoginData()
-    }
-  }, [])
 
   const routes = createHashRouter([
 
@@ -48,27 +34,31 @@ function App() {
       element: <AuthLayout />,
       errorElement: <NotFound />,
       children: [
-        { index: true, element: <Login saveLoginData={saveLoginData} /> },
-        { path: 'login', element: <Login saveLoginData={saveLoginData} /> },
+        { index: true, element: <Login saveLoginData /> },
+        { path: 'login', element: <Login /> },
         { path: 'forgetPass', element: <ForgetPass /> },
         { path: 'resetPass', element: <ResetPass /> },
         { path: 'register', element: <Register /> },
+        { path: 'verify-Account', element: <VerifyAccount /> },
       ]
     },
     {
-      path:'dashboard',
-      element: <ProtectedRoute> <MasterLayout loginData={loginData}/></ProtectedRoute>,
+      path: 'dashboard',
+      element: <ProtectedRoute> <MasterLayout /></ProtectedRoute>,
       errorElement: <NotFound />,
       children: [
-        { index: true, element: <Home loginData={loginData} /> },
-        { path: 'home', element:<Home/>},
+        { index: true, element: <Home /> },
+        { path: 'home', element: <Home /> },
         { path: 'recipesList', element: <RecipesList /> },
-        { path: 'recipe-data', element: <RecipeData /> },
-        { path: 'categories', element: <CategoriesList /> },
-        { path: 'users', element: <UsersList /> },
+        { path: 'recipe-data', element: <ProtectedRouteAdmin><RecipeData /></ProtectedRouteAdmin> },
+        { path: 'favourites', element: <Favourites /> },
+        { path: 'categories', element: <ProtectedRouteAdmin> <CategoriesList /></ProtectedRouteAdmin> },
+        { path: 'users', element: <ProtectedRouteAdmin><UsersList /></ProtectedRouteAdmin> },
       ]
 
     }
+
+
 
 
   ])

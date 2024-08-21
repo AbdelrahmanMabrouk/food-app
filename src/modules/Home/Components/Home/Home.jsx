@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Header from '../../../Shared/Components/Header/Header'
 import headerImg from '../../../../assets/images/header.png'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../../../context/context'
 
-export default function Home({ loginData }) {
+export default function Home() {
+  let { loginData } = useContext(AuthContext)
 
-  let navigate=useNavigate()
+  let navigate = useNavigate()
   return (
     <>
 
@@ -16,7 +18,7 @@ export default function Home({ loginData }) {
           <h5>Fill the <span className='text-success'>Recipes</span> !</h5>
           <p>you can now fill the meals easily using the table and form , click here and sill it with the table !</p>
         </div>
-        <button onClick={()=>{navigate('/dashboard/recipesList/')}} className='btn btn-success p-3'>Fill Recipes <i className='fa fa-arrow-alt-circle-right mx-2'></i></button>
+        <button onClick={() => { navigate('/dashboard/recipesList/') }} className='btn btn-success p-3'>Fill Recipes <i className='fa fa-arrow-alt-circle-right mx-2'></i></button>
       </div>
     </>
   )

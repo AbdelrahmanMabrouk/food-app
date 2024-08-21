@@ -26,9 +26,8 @@
   color: rgba(255, 255, 255, 1);
 }
 
-.home-data{
+.home-data {
   background: rgba(240, 255, 239, 1);
-
 }
 
 .form-control:focus {
@@ -54,6 +53,7 @@
   background: transparent !important;
 }
 
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -66,46 +66,40 @@
   border-width: 0;
 }
 
-.notfound-bg{
+.notfound-bg {
   background-image: url(./assets/images/notfoundBg.png);
-  height:100vh;
+  height: 100vh;
   /* background-size: 100% ;
 
   background-repeat:no-repeat; */
-  background-size:85% 100%;
+  background-size: 85% 100%;
   background-repeat: no-repeat;
   background-position-x: right;
- 
 }
 
-.title .btn{
+.title .btn {
   background-color: rgba(0, 146, 71, 1) !important;
-  
 }
 
-
-.title .btn:hover{
-  background-color: rgba(0, 146, 71, .9) !important;
-  
+.title .btn:hover {
+  background-color: rgba(0, 146, 71, 0.9) !important;
 }
 
-.table-info{
+.table-info {
   background-color: rgba(226, 229, 235, 1);
   border-radius: 10px;
 }
 
-
-
-.StandardTable thead  th  {
+.StandardTable thead th {
   background-color: lightgray !important;
   padding: 30px 10px;
   /* border-radius: 10px  10px ; */
- 
 }
 
-
-
-
-.img-list{
+.img-list {
   width: 25px;
+}
+
+.favImage{
+  width:100%;
 }

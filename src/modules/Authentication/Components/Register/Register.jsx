@@ -125,7 +125,7 @@ export default function Register() {
                   })}
                 />
               </div>
-              {errors.PhoneNumber && <p className='text-danger'>{errors.PhoneNumber.message}</p>}
+              {errors.phoneNumber && <p className='text-danger'>{errors.phoneNumber.message}</p>}
             </div>
           </div>
         </div>

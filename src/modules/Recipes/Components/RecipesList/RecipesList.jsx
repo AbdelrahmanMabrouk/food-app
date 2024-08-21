@@ -43,7 +43,7 @@ export default function RecipesList() {
       })
       console.log(localStorage.getItem('token'));
 
-      console.log(response);
+      console.log(response)
       handleClose()
       getRecipesList()
       toast.success('deleted succefully')

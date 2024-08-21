@@ -3,6 +3,9 @@
   command = "npm run build"
   functions = "netlify/functions"
   publish = ".next"
+  
+  [[plugins]]
+      package = "@netlify/plugin-nextjs"
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
@@ -19,5 +22,4 @@
   #  publish = "dist" # Folder with the static content for _redirect file
 
   ## more info on configuring this file: https://ntl.fyi/file-based-build-config
-  [[plugins]]
-  package = "@netlify/plugin-nextjs"
+ 

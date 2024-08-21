@@ -72,7 +72,10 @@ export default function Register() {
                 <span className="input-group-text" id="basic-addon1"><i className="fa-solid fa-mobile-screen"></i></span>
                 <input type="userName" className="form-control" placeholder="UserName" aria-label="UserName" aria-describedby="basic-addon1"
                   {...register('userName', {
-                    required: 'userName is required',
+                    required: 'userName is required maximum 6 chracter and has number ',
+                    pattern: {
+                      message: 'name maximum 6 chracter and has number'
+                    }
                   })}
                 />
               </div>
@@ -137,7 +140,7 @@ export default function Register() {
                     required: 'password is required',
                     pattern: {
                       value: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/,
-                      message: 'password must be at least 8 characters'
+                      message: 'password must be at least 8 characters, capital and special chracter'
                     }
                   })}
                 />
@@ -160,7 +163,7 @@ export default function Register() {
                     validate: (value) => value == watch("password") || "password don't match",
                     pattern: {
                       value: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/,
-                      message: 'password must be at least 8 characters',
+                      message: 'password must be at least 8 characters, capital and special chracter',
                     },
 
                   })}

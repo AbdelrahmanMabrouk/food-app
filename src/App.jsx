@@ -1,5 +1,5 @@
 // import { useState } from 'react'  
-import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import AuthLayout from './modules/Shared/Components/AuthLayout/AuthLayout'
 import Login from './modules/Authentication/Components/Login/Login'
@@ -13,14 +13,12 @@ import CategoriesList from './modules/Categories/Components/CategoriesList/Categ
 import UsersList from './modules/Users/Components/UsersList/UsersList'
 import NotFound from './modules/Shared/Components/NotFound/NotFound'
 import { ToastContainer } from 'react-toastify';
-import { useEffect, useState } from 'react'
-import { jwtDecode } from 'jwt-decode'
 import ProtectedRoute from './modules/Shared/Components/ProtectedRoute/ProtectedRoute'
 import 'react-toastify/dist/ReactToastify.css';
 import RecipeData from './modules/Recipes/Components/RecipeData/RecipeData'
 import VerifyAccount from './modules/Authentication/Components/VerifyAccount/VerifyAccount'
-import Favourites from './modules/Recipes/Components/Favourites/Favourites'
 import ProtectedRouteAdmin from './modules/Shared/Components/ProtectedRoute/ProtectedRouteAdmin'
+import Favourites from './modules/Recipes/Components/Favourits/Favourites'
 
 
 function App() {
@@ -51,7 +49,7 @@ function App() {
         { path: 'home', element: <Home /> },
         { path: 'recipesList', element: <RecipesList /> },
         { path: 'recipe-data', element: <ProtectedRouteAdmin><RecipeData /></ProtectedRouteAdmin> },
-        { path: 'favourites', element: <Favourites /> },
+        { path: 'favourites', element: <Favourites/> },
         { path: 'categories', element: <ProtectedRouteAdmin> <CategoriesList /></ProtectedRouteAdmin> },
         { path: 'users', element: <ProtectedRouteAdmin><UsersList /></ProtectedRouteAdmin> },
       ]

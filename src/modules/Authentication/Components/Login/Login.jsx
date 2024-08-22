@@ -21,7 +21,7 @@ export default function Login() {
 
   let { register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors ,isSubmitting },
 
   } = useForm()
 
@@ -121,7 +121,7 @@ export default function Login() {
           <Link to={'/register'} className='text-decoration-none text-black'>Register Now?</Link>
           <Link to={'/forgetPass'} className='text-decoration-none text-success'>Forgot Password?</Link>
         </div>
-        <button type='submit' className='btn btn-success d-block w-100 p-2 mt-4'>Login</button>
+        <button type='submit' className='btn btn-success d-block w-100 p-2 mt-4'disabled={isSubmitting}>Login</button>
       </form>
 
 

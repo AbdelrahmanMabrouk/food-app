@@ -18,9 +18,9 @@ export default function ResetPass() {
   let navigate = useNavigate()
   let { register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     watch
-    
+
   } = useForm()
 
   let onSubmite = async (data) => {
@@ -139,19 +139,19 @@ export default function ResetPass() {
         <div className="mb-3">
           <div className="input-group ">
             <span className="input-group-text" id="basic-addon1"><i className="fas fa-lock" /></span>
-            <input  type={isPasswordVisibale ? 'text' : 'password'} className="form-control" placeholder="Confirm Password" aria-label="E-mail" aria-describedby="basic-addon1"
+            <input type={isPasswordVisibale ? 'text' : 'password'} className="form-control" placeholder="Confirm Password" aria-label="E-mail" aria-describedby="basic-addon1"
               {...register('confirmPassword', {
                 required: 'Confirm password is required',
-                validate : (value)=>value == watch("password") || "password don't match",
+                validate: (value) => value == watch("password") || "password don't match",
                 pattern: {
                   value: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/,
                   message: 'password must be at least 8 characters',
                 },
-                
+
               })}
-              
+
             />
-            <button  onMouseDown={(e) => { e.preventDefault() }} onMouseUp={(e) => { e.preventDefault() }} type='button' onClick={() => { setIsPasswordVisibale(prev => !prev) }} className="input-group-text" >
+            <button onMouseDown={(e) => { e.preventDefault() }} onMouseUp={(e) => { e.preventDefault() }} type='button' onClick={() => { setIsPasswordVisibale(prev => !prev) }} className="input-group-text" >
               <span className='sr-only'>{isPasswordVisibale ? 'hide password' : 'show password'}</span>
               <i className={`fa  ${isPasswordVisibale ? 'fa-eye' : 'fa-eye-slash'} `} id="basic-addon1" /> </button>
           </div>
@@ -160,7 +160,7 @@ export default function ResetPass() {
 
         </div>
 
-        <button type='submit' className='btn btn-success d-block w-100 p-2 mt-4'>Reset Password</button>
+        <button type='submit' className='btn btn-success d-block w-100 p-2 mt-4' disabled={isSubmitting}>Reset Password</button>
 
       </form>
 

@@ -17,7 +17,7 @@ export default function Register() {
   let [isPasswordVisibale, setIsPasswordVisibale] = useState(false)
 
 
-  let { register, handleSubmit, formState: { errors }, watch } = useForm()
+  let { register, handleSubmit, formState: { errors, isSubmitting }, watch } = useForm()
 
 
   const appendFormData = (data) => {
@@ -37,20 +37,20 @@ export default function Register() {
 
 
 
-  let onSubmit =  async (data) => {
+  let onSubmit = async (data) => {
 
     let registerData = appendFormData(data);
     try {
-      let response = await axios.post(USERS_URLS.register,registerData)
+      let response = await axios.post(USERS_URLS.register, registerData)
       console.log(response);
       navigate('/verify-Account')
       toast.success(response.data.message)
-      
+
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message)
     }
-  
+
 
   }
 
@@ -189,9 +189,9 @@ export default function Register() {
                   {...register('profileImage', {
                     required: 'profileImage is required',
                   })}
-                /> 
+                />
               </div>
-                {errors.profileImage && <p className='text-danger'>{errors.profileImage.message}</p>}
+              {errors.profileImage && <p className='text-danger'>{errors.profileImage.message}</p>}
             </div>
           </div>
         </div>
@@ -203,7 +203,7 @@ export default function Register() {
           <Link to={'/login'} className='text-decoration-none text-success d-flex ms-auto' >Login Now?</Link>
         </div>
 
-        <button className='btn btn-success d-block w-75 m-auto text-center'>Register</button>
+        <button className='btn btn-success d-block w-75 m-auto text-center' disabled={isSubmitting}>Register</button>
       </form>
 
 

@@ -257,13 +257,6 @@ export default function RecipesList() {
           </nav>
         </div>
       </div> : <NoData />}
-
-
-
-
-
-
-
     </>
   )
 }

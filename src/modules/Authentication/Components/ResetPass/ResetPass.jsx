@@ -14,7 +14,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function ResetPass() {
   let [isPasswordVisibale, setIsPasswordVisibale] = useState(false)
-
   let navigate = useNavigate()
   let { register,
     handleSubmit,

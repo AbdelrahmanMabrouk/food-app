@@ -33,7 +33,10 @@ export default function RecipeData() {
   let getCategoriesList = async () => {
     try {
       let response = await axios.get(CATEGORIES_URLS.getList,
-        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      
+        params:{pageSize:1000}
+      }
 
       );
       console.log(response.data.data);

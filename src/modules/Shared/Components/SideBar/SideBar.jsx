@@ -24,10 +24,11 @@ export default function SideBar() {
 
    
 
-    <div className="">
+    <div className=''>
         <Sidebar collapsed={isCollapse} className='sidebar-container'>
+          <button className='first-item my-4 ps-1' style={{border:'none' , background:'none'}} onClick={toggleCollapse}><img style={{width:isCollapse?'4rem' : '8rem', transition:'all 300ms'}} src={toggler} alt='toggler-icon' /></button>
           <Menu className=''>
-            <MenuItem className='first-item my-4 ps-1' onClick={toggleCollapse} icon={<img src={toggler} alt='toggler-icon' />}></MenuItem>
+            {/* <MenuItem className='first-item my-4 ps-1' onClick={toggleCollapse} icon={<img src={toggler} alt='toggler-icon' />}></MenuItem> */}
             <MenuItem icon={<i className="fa-solid fa-house"></i>} component={<Link to="/dashboard" />}> home</MenuItem>
             {loginData?.userGroup =='SuperAdmin'?<MenuItem icon={<i className="fa-solid fa-user-group"></i>} component={<Link to="/dashboard/users" />}> Users</MenuItem>:""}
             <MenuItem icon={<i className="fa-solid fa-table-cells-large"></i>} component={<Link to="/dashboard/recipesList" />}> Recipes</MenuItem>

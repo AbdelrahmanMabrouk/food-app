@@ -34,10 +34,14 @@
   border-color: rgba(47, 140, 96, 0.63) !important;
   box-shadow: 0 0 0 0.1rem rgba(47, 140, 96, 0.63) !important;
 }
-
+.sidebar-container{
+  border: none !important;
+}
 .sidebar-container .ps-sidebar-container {
-  background-color: rgba(31, 38, 62, 1);
-  height: 120vh;
+ background-color:transparent !important;
+  height: 100%;
+  
+
 }
 
 .sidebar-container .ps-menu-button {

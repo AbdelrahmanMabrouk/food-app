@@ -15,7 +15,7 @@ export default function MasterLayout() {
 
         
         <div className="d-flex">
-          <div className="bg-danger">
+          <div className=" vh-100  " style={{ backgroundColor: "rgba(31, 38, 62, 1)", borderRadius:'0 40px 0 0' }}>
             <SideBar/>
           </div>
           <div className=" w-100 container-fluid">

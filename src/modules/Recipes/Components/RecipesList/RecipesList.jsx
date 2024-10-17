@@ -11,6 +11,7 @@ import DeleteConfirmation from '../../../Shared/Components/DeleteConfirmation/De
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../../context/context'
+import PaginationComponent from '../../../Shared/Components/PaginationComponent/PaginationComponent'
 
 export default function RecipesList() {
   let navigate = useNavigate()
@@ -23,11 +24,12 @@ export default function RecipesList() {
   const [tagsList, setTagsList] = useState([])
   const [categoryList, setCategoryList] = useState([]);
 
-
   const [arrayOfPages, setArrayOfPages] = useState([])
   const [recipesList, setRecipesList] = useState([])
   const [show, setShow] = useState(false);
   const [recipeId, setRcipeId] = useState(0)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPage, setTotalPage] = useState(1)
 
   const handleClose = () => setShow(false);
   const handleShow = (id) => {
@@ -56,7 +58,7 @@ export default function RecipesList() {
   }
 
 
-  let getRecipesList = async (pageNumber, pageSize, nameInput, tagInput, catInput) => {
+  let getRecipesList = async (pageNumber = 1, pageSize = '', nameInput = '', tagInput = '', catInput = '') => {
 
     try {
       let response = await axios.get(RECIPES_URLS.getList, {
@@ -64,13 +66,13 @@ export default function RecipesList() {
         params: {
           pageSize: pageSize,
           pageNumber: pageNumber,
-          name: nameInput,
-          tagId: tagInput,
-          categoryId: catInput
+          name: nameValue,
+          tagId: tagValue,
+          categoryId: catValue
         }
 
       })
-      setArrayOfPages(Array(response.data.totalNumberOfPages).fill().map((_, i) => i + 1))
+      setTotalPage(response.data.totalNumberOfPages)
 
 
       setRecipesList(response.data.data);
@@ -120,7 +122,10 @@ export default function RecipesList() {
   let getCategoriesList = async () => {
     try {
       let response = await axios.get(CATEGORIES_URLS.getList,
-        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } ,
+      
+        params:{pageSize:1000}
+      }
       );
       setCategoryList(response.data.data);
     } catch (error) {
@@ -128,9 +133,13 @@ export default function RecipesList() {
     }
   }
 
+  let onPageChange = (pageNum) => {
+    setCurrentPage(pageNum)
+  }
+
   let addToFav = async (id) => {
     try {
-      let response = await axios.post(USER_RECIPES.addToFav,{
+      let response = await axios.post(USER_RECIPES.addToFav, {
         "recipeId": id,
       },
         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
@@ -144,10 +153,10 @@ export default function RecipesList() {
 
 
   useEffect(() => {
-    getRecipesList(1, 4)
+    getRecipesList(currentPage, 4)
     getCategoriesList()
     getAllTags()
-  }, [])
+  }, [currentPage,nameValue,tagValue,catValue])
 
 
   return (
@@ -185,13 +194,13 @@ export default function RecipesList() {
         </div>
         <div className="col-md-3">
           <select className="form-control my-2 form-select" placeholder="Tag" onChange={getValueTag}>
-            <option value='' hidden > select tag</option>
+            <option value='' > select tag</option>
             {tagsList.map(tag => <option key={tag.id} value={tag.id}>{tag.name}</option>)},
           </select>
         </div>
         <div className="col-md-3">
           <select className="form-control my-2 form-select" placeholder="category" onChange={getValueCat}>
-            <option value='' hidden > select category</option>
+            <option value='' > select category</option>
             {categoryList?.map((category) => (
               <option key={category.id} value={category.id}>{category.name}</option>
             ))}
@@ -228,7 +237,7 @@ export default function RecipesList() {
                 {loginData?.userGroup == 'SuperAdmin' ? <td >
                   <i className='fa fa-edit text-warning mx-3' aria-hidden='true'></i>
                   <button type='button' className='fa fa-trash text-danger border-0' aria-hidden='true' onClick={() => handleShow(recipe.id)}></button>
-                </td> : <td><button onClick={()=>addToFav(recipe.id)} type='button'  className='fa-solid fa-heart text-danger border-0' aria-hidden='true'></button></td>}
+                </td> : <td><button onClick={() => addToFav(recipe.id)} type='button' className='fa-solid fa-heart text-danger border-0' aria-hidden='true'></button></td>}
               </tr>
             )}
 
@@ -236,26 +245,11 @@ export default function RecipesList() {
           </tbody>
         </table>
 
-        <div className="pagination-button my-3 d-flex w-25 m-auto">
 
-          <nav aria-label="Page navigation example">
-            <ul className="pagination">
-              <li className="page-item">
-                <a className="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">«</span>
-                </a>
-              </li>
-              {arrayOfPages?.map((pageNo) =>
-                <li key={pageNo} className="page-item " onClick={() => getRecipesList(pageNo, 4)}><button className="page-link" type='button' >{pageNo}</button></li>
-              )}
-              <li className="page-item" >
-                <a className="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">»</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+
+        <PaginationComponent currentPage={currentPage} totalPages={totalPage} onPageChange={onPageChange} />
+
+
       </div> : <NoData />}
     </>
   )
